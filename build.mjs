@@ -6,7 +6,7 @@ import { createHash } from 'node:crypto';
 
 const root = path.dirname(fileURLToPath(import.meta.url));
 const require = createRequire(import.meta.url);
-const runtime = 'C:/Users/MECHREVO/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules';
+const runtime = path.resolve(path.dirname(process.execPath), '..', 'node_modules');
 let markedPath;
 try { markedPath = require.resolve('marked'); }
 catch { markedPath = require.resolve('marked', { paths: [runtime] }); }
