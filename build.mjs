@@ -62,6 +62,10 @@ const crops = [
 ];
 const details = `<div class="battle-details" aria-label="战斗信息局部观察">${crops.map(c => `<div class="battle-detail"><h4>${c.title}</h4><div class="crop-stage"><div class="image-crop" style="--crop-ratio:${c.w}/${c.h};--crop-width:${1280/c.w*100}%;--crop-left:${-c.x/c.w*100}%;--crop-top:${-c.y/c.h*100}%;--crop-max:${c.w===98?110:230}px"><img src="assets/05-battle.png" alt="${c.alt}" loading="lazy"></div></div><p>${c.description}</p></div>`).join('')}</div>`;
 body = body.replace(/(<figure><a[^>]+href="assets\/05-battle.png"[\s\S]*?<\/figure>)/, '$1' + details);
+body = body.split(/(?=<h[23]\s)/).map(chunk => {
+  const heading = chunk.match(/^<h[23] id="([^"]+)"/);
+  return heading ? `<section class="reading-section" data-reading-heading="${heading[1]}">${chunk}</section>` : chunk;
+}).join('');
 const links = sections.map(({id, label, subsections}, j) => `<div class="nav-group" data-section="${id}"><a class="chapter-link" href="#${id}"><span>${String(j + 1).padStart(2, '0')}</span>${label}</a><div class="subnav">${subsections.map(sub => `<a href="#${sub.id}">${sub.label}</a>`).join('')}</div></div>`).join('');
 const styles = await fs.readFile(path.join(root, 'styles.css'), 'utf8');
 const reader = await fs.readFile(path.join(root, 'reader.js'), 'utf8');

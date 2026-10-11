@@ -22,11 +22,17 @@
     const offset = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--reading-offset')) || 32;
     setCurrent(headings.filter(h => h.getBoundingClientRect().top <= offset + 24).at(-1));
   };
-  const observer = new IntersectionObserver(update, {rootMargin:'-8% 0px -65% 0px',threshold:[0,1]});
-  headings.forEach(h => observer.observe(h));
-  // A small reading line sentinel also catches headings crossing the sticky menu.
-  const crossing = new IntersectionObserver(update,{rootMargin:'0px 0px -90% 0px',threshold:0});
-  headings.forEach(h => crossing.observe(h));
+  let observer;
+  const observeReadingPosition = () => {
+    observer?.disconnect();
+    const offset = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--reading-offset')) || 32;
+    // Observe entire reading blocks so a fast scroll into a long paragraph cannot skip a heading.
+    const line = offset + 24;
+    observer = new IntersectionObserver(update, {rootMargin:`-${line}px 0px -${Math.max(0, innerHeight-line-1)}px 0px`,threshold:0});
+    document.querySelectorAll('.reading-section').forEach(block => observer.observe(block));
+    update();
+  };
+  observeReadingPosition();
   const moveToHash = () => {
     const target = document.getElementById(decodeURIComponent(location.hash.slice(1)));
     if (target?.matches('h2,h3')) setCurrent(target);
@@ -41,7 +47,7 @@
     if (event.key === 'Escape' && menu.open) {menu.open=false;summary.focus();}
   });
   window.addEventListener('hashchange', moveToHash);
-  window.addEventListener('resize', update);
+  window.addEventListener('resize', observeReadingPosition);
   window.addEventListener('pageshow', update);
   new ResizeObserver(update).observe(document.querySelector('article'));
   moveToHash();

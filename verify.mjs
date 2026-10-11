@@ -55,6 +55,10 @@ try{
     await page.locator('#battle-2-3').evaluate(el=>el.scrollIntoView({block:'start'}));
     await page.waitForFunction(()=>document.querySelector('nav a[aria-current="location"]')?.getAttribute('href')==='#battle-2-3');
     if(mobile)check(await nav.locator('.current-chapter').innerText()==='02 · 战斗决策','Current chapter label failed');
+    for(const id of ['battle-2-6','tension-4-3']){
+      await page.locator('#'+id).evaluate(el=>scrollTo(0,scrollY+el.getBoundingClientRect().top+280));
+      await page.waitForFunction(id=>document.querySelector('nav [aria-current]')?.hash==='#'+id,id);
+    }
     await page.locator(mobile?'.mobile-table':'.table-wrap').first().scrollIntoViewIfNeeded();
     await page.screenshot({path:path.join(output,`table-${width}.png`)});
     await page.locator('img[src="assets/02-decisions.svg"]').screenshot({path:path.join(output,`decisions-${width}.png`)});
