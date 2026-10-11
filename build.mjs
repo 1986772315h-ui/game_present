@@ -32,9 +32,9 @@ let body = marked.parse(markdown).replace(/<h2>(.*?)<\/h2>/g, (_, title) => {
 if (!sections.length) throw new Error('正文缺少章节');
 body = body.replace('<h1>《崩坏：星穹铁道》系统拆解</h1>', '<h1><span class="game-title">《崩坏：星穹铁道》</span><span class="work-title">系统拆解</span></h1>');
 body = body.replace(/<p><img src="assets\/([^"]+)\.svg" alt="([^"]*)"><\/p>/g,
-  (_, name, alt) => `<figure><a class="diagram" href="assets/${name}.svg" target="_blank" rel="noopener" aria-label="查看大图：${alt}"><picture><source media="(max-width: 900px)" srcset="assets/${name}-mobile.svg"><img src="assets/${name}.svg" alt="${alt}" loading="lazy"></picture></a><figcaption>${alt}<span aria-hidden="true"> · </span><a href="assets/${name}.svg" target="_blank" rel="noopener">查看大图</a></figcaption></figure>`);
+  (_, name, alt) => `<figure><a class="diagram" href="assets/${name}.svg" target="_blank" rel="noopener" aria-label="查看大图：${alt}"><picture><source media="(max-width: 900px)" srcset="assets/${name}-mobile.svg"><img src="assets/${name}.svg" alt="${alt}" loading="lazy"></picture></a></figure>`);
 body = body.replace(/<p><img src="assets\/([^\"]+)\.png" alt="([^\"]*)"><\/p>/g,
-  (_, name, alt) => `<figure><a class="diagram" href="assets/${name}.png" target="_blank" rel="noopener" aria-label="查看大图：${alt}"><img src="assets/${name}.png" alt="${alt}" loading="lazy"></a><figcaption>${alt}<span aria-hidden="true"> · </span><a href="assets/${name}.png" target="_blank" rel="noopener">查看大图</a></figcaption></figure>`);
+  (_, name, alt) => `<figure><a class="diagram" href="assets/${name}.png" target="_blank" rel="noopener" aria-label="查看大图：${alt}"><img src="assets/${name}.png" alt="${alt}" loading="lazy"></a></figure>`);
 body = body.replace(/<table>/g, '<div class="table-wrap"><table>').replace(/<\/table>/g, '</table></div>');
 const links = sections.map(({id, label}, j) => `<a href="#${id}"><span>${String(j + 1).padStart(2, '0')}</span>${label}</a>`).join('');
 const document = `<!doctype html>
@@ -50,7 +50,7 @@ header{max-width:1240px;margin:0 auto;padding:28px 28px 20px;display:flex;justif
 @media(max-width:760px){header{padding:18px 20px;flex-wrap:wrap;gap:4px}.shell{display:block;padding:18px 16px 48px}aside{position:static;margin:0 0 18px}nav{grid-template-columns:repeat(3,minmax(0,1fr));gap:2px 8px}nav a{font-size:13px;gap:8px;padding:5px 2px;min-height:44px}nav span{font-size:11px}article{padding:26px 20px 35px}.subtitle{font-size:20px}h2{font-size:23px;margin-top:42px}h3{font-size:18px}th,td{padding:10px 8px;font-size:14px}th:first-child,td:first-child{width:25%}figure a.diagram{padding:4px}figcaption{font-size:12px}}
 @media print{body{background:#fff}header,aside,footer,.skip{display:none}.shell{display:block;padding:0}article{border:0;padding:0}h2,h3{break-after:avoid}figure,table{break-inside:avoid}a{color:inherit}}
 h1 .game-title{white-space:nowrap}@media(max-width:600px){h1{font-size:clamp(24px,7vw,30px)}h1 .work-title{display:block}}
-</style></head><body><a class="skip" href="#content">跳转到正文</a><header><span>系统策划作品</span><span>历史版本分析 / 3.5</span></header><div class="shell"><aside><nav aria-label="作品目录">${links}</nav></aside><article id="content">${body}</article></div><footer>《崩坏：星穹铁道》系统拆解 · 基于个人游玩体验</footer></body></html>`;
+</style></head><body><a class="skip" href="#content">跳转到正文</a><header><span>游戏拆解案</span></header><div class="shell"><aside><nav aria-label="作品目录">${links}</nav></aside><article id="content">${body}</article></div><footer>《崩坏：星穹铁道》系统拆解 · 基于个人游玩体验</footer></body></html>`;
 await fs.mkdir(path.join(root, 'dist'), { recursive: true });
 const assetOutput = path.join(root, 'dist', 'assets');
 await fs.mkdir(assetOutput, { recursive: true });

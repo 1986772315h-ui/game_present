@@ -11,9 +11,9 @@ header{max-width:1240px;margin:0 auto;padding:28px 28px 20px;display:flex;justif
 @media(max-width:760px){header{padding:18px 20px;flex-wrap:wrap;gap:4px}.shell{display:block;padding:18px 16px 48px}aside{position:static;margin:0 0 18px}nav{grid-template-columns:repeat(3,minmax(0,1fr));gap:2px 8px}nav a{font-size:13px;gap:8px;padding:5px 2px;min-height:44px}nav span{font-size:11px}article{padding:26px 20px 35px}.subtitle{font-size:20px}h2{font-size:23px;margin-top:42px}h3{font-size:18px}th,td{padding:10px 8px;font-size:14px}th:first-child,td:first-child{width:25%}figure a.diagram{padding:4px}figcaption{font-size:12px}}
 @media print{body{background:#fff}header,aside,footer,.skip{display:none}.shell{display:block;padding:0}article{border:0;padding:0}h2,h3{break-after:avoid}figure,table{break-inside:avoid}a{color:inherit}}
 h1 .game-title{white-space:nowrap}@media(max-width:600px){h1{font-size:clamp(24px,7vw,30px)}h1 .work-title{display:block}}
-</style></head><body><a class="skip" href="#content">跳转到正文</a><header><span>系统策划作品</span><span>历史版本分析 / 3.5</span></header><div class="shell"><aside><nav aria-label="作品目录"><a href="#overview"><span>01</span>全局概览</a><a href="#battle"><span>02</span>战斗决策</a><a href="#progression"><span>03</span>养成逻辑</a><a href="#tension"><span>04</span>系统张力</a><a href="#conclusion"><span>05</span>结语</a></nav></aside><article id="content"><h1><span class="game-title">《崩坏：星穹铁道》</span><span class="work-title">系统拆解</span></h1>
+</style></head><body><a class="skip" href="#content">跳转到正文</a><header><span>游戏拆解案</span></header><div class="shell"><aside><nav aria-label="作品目录"><a href="#overview"><span>01</span>全局概览</a><a href="#battle"><span>02</span>战斗决策</a><a href="#progression"><span>03</span>养成逻辑</a><a href="#tension"><span>04</span>系统张力</a><a href="#conclusion"><span>05</span>结语</a></nav></aside><article id="content"><h1><span class="game-title">《崩坏：星穹铁道》</span><span class="work-title">系统拆解</span></h1>
 <p class="subtitle">低操作负担下，策略与养成如何形成长期目标？</p>
-<p>分析范围：主要撰写于 2025 年 9 月 20 日，3.5 版本。本文基于开服以来的个人游玩体验，聚焦战斗、养成及其相互作用。</p>
+<p>分析范围：首次撰写于 2025 年 9 月 20 日，主要参考 3.5 版本。基于开服以来的个人游玩体验，聚焦战斗、养成及其相互作用。</p>
 <p><strong>核心判断</strong></p>
 <ul>
 <li><strong>低操作门槛仍能容纳策略取舍。</strong> 配队与装备决定可用手段，战技点、行动顺序和终结技时机决定手段如何兑现。</li>
@@ -22,7 +22,7 @@ h1 .game-title{white-space:nowrap}@media(max-width:600px){h1{font-size:clamp(24p
 </ul>
 <h2 id="overview" tabindex="-1">01 · 全局：内容吸引、养成与挑战相互连接</h2>
 <p>《崩铁》将角色收集、剧情探索与回合制战斗结合在一起。剧情和演出建立角色吸引力，养成将角色转化为可用的战斗能力，关卡再为阵容配置与资源投入提供检验场景。</p>
-<figure><a class="diagram" href="assets/01-loop.svg" target="_blank" rel="noopener" aria-label="查看大图：内容、培养与挑战之间的关系"><picture><source media="(max-width: 900px)" srcset="assets/01-loop-mobile.svg"><img src="assets/01-loop.svg" alt="内容、培养与挑战之间的关系" loading="lazy"></picture></a><figcaption>内容、培养与挑战之间的关系<span aria-hidden="true"> · </span><a href="assets/01-loop.svg" target="_blank" rel="noopener">查看大图</a></figcaption></figure>
+<figure><a class="diagram" href="assets/01-loop.svg" target="_blank" rel="noopener" aria-label="查看大图：内容、培养与挑战之间的关系"><picture><source media="(max-width: 900px)" srcset="assets/01-loop-mobile.svg"><img src="assets/01-loop.svg" alt="内容、培养与挑战之间的关系" loading="lazy"></picture></a></figure>
 <p>图中呈现的是目标与反馈关系，不是每名玩家必须依次完成的流程。偏好剧情的玩家可以降低挑战投入；追求高难表现的玩家则会反复调整配队、练度和操作。</p>
 <p><strong>要点：</strong> 同一套角色内容承载了情感收集、基础通关和极限挑战等不同目标。系统需要让这些目标可以并存，避免所有玩家都被推向同一条养成标准。</p>
 <h2 id="battle" tabindex="-1">02 · 战斗：个人最优动作未必是团队最优选择</h2>
@@ -30,7 +30,7 @@ h1 .game-title{white-space:nowrap}@media(max-width:600px){h1{font-size:clamp(24p
 <p>玩家先根据敌人的弱点、机制和关卡目标选择队伍，再配置速度、装备与技能循环。不同角色不仅承担输出、增益和生存职能，也影响全队的战技点供需。</p>
 <p>光锥则把装备效果与角色手持物表现分离：装备选择可以影响构筑，而不必改变角色武器和动作的视觉设定。它扩大了表现设计的自由度，装备差异的辨识则更多依赖图像、文本与实际效果。</p>
 <h3>局内操作处理共享资源与行动时机</h3>
-<figure><a class="diagram" href="assets/05-battle.png" target="_blank" rel="noopener" aria-label="查看大图：战斗界面示例：行动序列、战技点与角色状态共同支撑局内判断；此截图与下文简化情境不同"><img src="assets/05-battle.png" alt="战斗界面示例：行动序列、战技点与角色状态共同支撑局内判断；此截图与下文简化情境不同" loading="lazy"></a><figcaption>战斗界面示例：行动序列、战技点与角色状态共同支撑局内判断；此截图与下文简化情境不同<span aria-hidden="true"> · </span><a href="assets/05-battle.png" target="_blank" rel="noopener">查看大图</a></figcaption></figure>
+<figure><a class="diagram" href="assets/05-battle.png" target="_blank" rel="noopener" aria-label="查看大图：战斗界面示例：行动序列、战技点与角色状态共同支撑局内判断；此截图与下文简化情境不同"><img src="assets/05-battle.png" alt="战斗界面示例：行动序列、战技点与角色状态共同支撑局内判断；此截图与下文简化情境不同" loading="lazy"></a></figure>
 <div class="table-wrap"><table>
 <thead>
 <tr>
@@ -62,7 +62,7 @@ h1 .game-title{white-space:nowrap}@media(max-width:600px){h1{font-size:clamp(24p
 </tbody></table></div>
 <p><strong>一个战技点分配情境</strong></p>
 <p>假设当前只有 1 点战技点，辅助先于主输出行动；普攻回复 1 点，战技消耗 1 点，不考虑额外产点、耗点或插入行动。</p>
-<figure><a class="diagram" href="assets/02-decisions.svg" target="_blank" rel="noopener" aria-label="查看大图：同一初始资源下，两种合法行动顺序的机会成本"><picture><source media="(max-width: 900px)" srcset="assets/02-decisions-mobile.svg"><img src="assets/02-decisions.svg" alt="同一初始资源下，两种合法行动顺序的机会成本" loading="lazy"></picture></a><figcaption>同一初始资源下，两种合法行动顺序的机会成本<span aria-hidden="true"> · </span><a href="assets/02-decisions.svg" target="_blank" rel="noopener">查看大图</a></figcaption></figure>
+<figure><a class="diagram" href="assets/02-decisions.svg" target="_blank" rel="noopener" aria-label="查看大图：同一初始资源下，两种合法行动顺序的机会成本"><picture><source media="(max-width: 900px)" srcset="assets/02-decisions-mobile.svg"><img src="assets/02-decisions.svg" alt="同一初始资源下，两种合法行动顺序的机会成本" loading="lazy"></picture></a></figure>
 <p>两条路径最终都剩 1 点，但效果不同：前者保留了主输出使用战技的机会，后者先取得辅助战技的效果。若当前必须治疗或补增益，后者可能更合理。评价动作，需要看整段循环和当前目标。</p>
 <p><strong>要点：</strong> 共享资源让少量按钮也能产生团队取舍。不过，当养成优势足以跳过敌人机制，或关卡只剩固定操作顺序时，这些取舍就可能失去意义。低门槛与策略深度是否共存，需要在具体关卡中检验。</p>
 <h2 id="progression" tabindex="-1">03 · 养成：从可预期成长，到不确定的提升</h2>
@@ -96,7 +96,7 @@ h1 .game-title{white-space:nowrap}@media(max-width:600px){h1{font-size:clamp(24p
 </tr>
 </tbody></table></div>
 <p>前几类成长通常有明确的投入目标；遗器则将目标拆成多个随机环节。持续获得装备，并不意味着持续获得当前角色需要的装备。</p>
-<figure><a class="diagram" href="assets/03-relic.svg" target="_blank" rel="noopener" aria-label="查看大图：普通副本获取遗器时的随机环节，以及定向合成的作用范围"><picture><source media="(max-width: 900px)" srcset="assets/03-relic-mobile.svg"><img src="assets/03-relic.svg" alt="普通副本获取遗器时的随机环节，以及定向合成的作用范围" loading="lazy"></picture></a><figcaption>普通副本获取遗器时的随机环节，以及定向合成的作用范围<span aria-hidden="true"> · </span><a href="assets/03-relic.svg" target="_blank" rel="noopener">查看大图</a></figcaption></figure>
+<figure><a class="diagram" href="assets/03-relic.svg" target="_blank" rel="noopener" aria-label="查看大图：普通副本获取遗器时的随机环节，以及定向合成的作用范围"><picture><source media="(max-width: 900px)" srcset="assets/03-relic-mobile.svg"><img src="assets/03-relic.svg" alt="普通副本获取遗器时的随机环节，以及定向合成的作用范围" loading="lazy"></picture></a></figure>
 <p>这里需要区分两条标准：<strong>可用</strong>指装备能支撑目标玩法与队伍循环；<strong>更优</strong>指在此基础上继续提高属性与表现。角色不同、目标不同，标准也会变化，不应统一等同于“套装正确、双暴完美”。</p>
 <p>在套装收益较高的构筑中，4 件隧洞遗器与 2 件位面饰品会收紧替换空间，但这不等于规则禁止散件；是否保留套装，仍应比较实际收益。</p>
 <p><strong>3.5 版本的可控工具：</strong> 自塑尘脂可用于定向合成的主副属性；变量骰子提供对满级遗器副属性强化分配的重掷机会。前者缩小胚子生成的不确定性，后者增加尝试机会，都不能保证最终属性恰好满足目标。3.5 已将遂愿尘脂合并至自塑尘脂。<a href="https://weibo.com/ttarticle/p/show?id=2309405199075288416343">版本规则说明</a></p>
